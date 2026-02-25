@@ -623,10 +623,6 @@
                     <i class="fas fa-phone"></i>
                     <span id="btn-contact-text">تواصل معي</span>
                 </a>
-                <a href="Ahmed_Gomaa_CV.pdf" download class="btn btn-secondary" id="btn-cv">
-                    <i class="fas fa-download"></i>
-                    <span id="btn-cv-text">تحميل السيرة الذاتية</span>
-                </a>
             </div>
         </div>
         <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
@@ -842,7 +838,6 @@
                     أؤمن بأن النجاح يأتي من الالتزام والتطوير المستمر، وأبحث عن فرصة للانضمام إلى فريق عمل محترف 
                     في الإمارات العربية المتحدة حيث يمكنني أن أساهم في نجاح المشاريع الكبرى وأطور من مهاراتي باستمرار.`,
                     btnContact: "تواصل معي",
-                    btnCV: "تحميل السيرة الذاتية"
                 },
                 about: {
                     title: "نبذة عني",
@@ -943,7 +938,6 @@
                     linkedin: "عرض الملف الشخصي",
                     location: "الموقع",
                     locationVal: "الإمارات العربية المتحدة",
-                    downloadCV: "تحميل السيرة الذاتية الكاملة"
                 },
                 footer: {
                     quote: `"النجاح ليس وجهة، بل رحلة مستمرة من التعلم والتطوير. 
@@ -971,7 +965,7 @@
                     I believe that success comes from commitment and continuous development, and I am looking for an opportunity to join a professional team 
                     in the United Arab Emirates where I can contribute to the success of major projects and continuously develop my skills.`,
                     btnContact: "Contact Me",
-                    btnCV: "Download CV"
+                    
                 },
                 about: {
                     title: "About Me",
@@ -1072,7 +1066,7 @@
                     linkedin: "View Profile",
                     location: "Location",
                     locationVal: "United Arab Emirates",
-                    downloadCV: "Download Full CV"
+                    
                 },
                 footer: {
                     quote: `"Success is not a destination, but a continuous journey of learning and development. 
@@ -1112,7 +1106,7 @@
             document.getElementById('hero-title').textContent = t.hero.title;
             document.getElementById('hero-intro').textContent = t.hero.intro;
             document.getElementById('btn-contact-text').textContent = t.hero.btnContact;
-            document.getElementById('btn-cv-text').textContent = t.hero.btnCV;
+            
             
             // Update about
             document.getElementById('about-title').textContent = t.about.title;
@@ -1158,7 +1152,7 @@
             document.getElementById('linkedin-text').textContent = t.contact.linkedin;
             document.getElementById('contact-location-title').textContent = t.contact.location;
             document.getElementById('contact-location').textContent = t.contact.locationVal;
-            document.getElementById('download-cv-text').textContent = t.contact.downloadCV;
+            
             
             // Update footer
             document.getElementById('footer-quote').textContent = t.footer.quote;
