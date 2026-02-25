@@ -1,0 +1,1211 @@
+
+html_content = '''<!DOCTYPE html>
+<html lang="ar" dir="rtl" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">أحمد محمد جمعة | Concrete Plant Operator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #c9a227;
+            --accent: #e67e22;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --concrete: #718096;
+            --success: #38a169;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Cairo', 'Roboto', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+        
+        /* Language Toggle */
+        .lang-toggle {
+            position: fixed;
+            top: 100px;
+            left: 20px;
+            z-index: 2000;
+            background: var(--secondary);
+            color: var(--primary);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            font-weight: 700;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            font-family: 'Cairo', sans-serif;
+        }
+        
+        .lang-toggle:hover {
+            transform: scale(1.05);
+            background: #d4af37;
+        }
+        
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.5" x="0" y="0" width="100" height="100"/></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 2rem;
+            max-width: 900px;
+        }
+        
+        .profile-img {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            border: 5px solid var(--secondary);
+            margin-bottom: 2rem;
+            object-fit: cover;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .hero .intro {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: #d4af37;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 2rem;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 54, 93, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            color: white;
+            font-weight: 800;
+            font-size: 1.5rem;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 3rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* About Section */
+        .about {
+            background: var(--light);
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+        
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 700;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+        }
+        
+        .stat-label {
+            color: var(--concrete);
+            font-weight: 600;
+        }
+        
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--secondary);
+        }
+        
+        .skill-category h3 {
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-list {
+            list-style: none;
+        }
+        
+        .skill-list li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .skill-list i {
+            color: var(--success);
+        }
+        
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            right: 30px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--secondary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-right: 80px;
+            margin-bottom: 3rem;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            right: 20px;
+            top: 0;
+            width: 20px;
+            height: 20px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px var(--secondary);
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .timeline-date {
+            color: var(--accent);
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-company {
+            color: var(--concrete);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            color: white;
+        }
+        
+        .contact .section-title {
+            color: white;
+        }
+        
+        .contact .section-title::after {
+            background: var(--secondary);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .contact-card {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .contact-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255,255,255,0.15);
+        }
+        
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+        
+        .contact-card h3 {
+            margin-bottom: 0.5rem;
+        }
+        
+        .contact-card a, .contact-card span {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .contact-card a:hover {
+            color: var(--secondary);
+        }
+        
+        /* Footer Quote */
+        .footer-quote {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: var(--dark);
+            color: white;
+        }
+        
+        .footer-quote p {
+            font-size: 1.5rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 1rem;
+            line-height: 1.6;
+        }
+        
+        .footer-quote .author {
+            color: var(--secondary);
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        /* LTR Styles for English */
+        html[dir="ltr"] .timeline::before {
+            right: auto;
+            left: 30px;
+        }
+        
+        html[dir="ltr"] .timeline-item {
+            padding-right: 0;
+            padding-left: 80px;
+        }
+        
+        html[dir="ltr"] .timeline-dot {
+            right: auto;
+            left: 20px;
+        }
+        
+        html[dir="ltr"] .lang-toggle {
+            left: auto;
+            right: 20px;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero .title {
+                font-size: 1.3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .timeline::before {
+                right: 15px;
+            }
+            
+            html[dir="ltr"] .timeline::before {
+                left: 15px;
+                right: auto;
+            }
+            
+            .timeline-item {
+                padding-right: 50px;
+            }
+            
+            html[dir="ltr"] .timeline-item {
+                padding-left: 50px;
+                padding-right: 0;
+            }
+            
+            .timeline-dot {
+                right: 5px;
+            }
+            
+            html[dir="ltr"] .timeline-dot {
+                left: 5px;
+                right: auto;
+            }
+            
+            .lang-toggle {
+                top: 80px;
+                left: 10px;
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+            
+            html[dir="ltr"] .lang-toggle {
+                right: 10px;
+                left: auto;
+            }
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Toggle Button -->
+    <button class="lang-toggle" onclick="toggleLanguage()">
+        <i class="fas fa-globe"></i> <span id="lang-text">English</span>
+    </button>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo" id="logo-text">أحمد جمعة</div>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#home" data-key="home">الرئيسية</a></li>
+                <li><a href="#about" data-key="about">نبذة عني</a></li>
+                <li><a href="#skills" data-key="skills">المهارات</a></li>
+                <li><a href="#experience" data-key="experience">الخبرات</a></li>
+                <li><a href="#contact" data-key="contact">تواصل معي</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="data:image/jpeg;base64,''' + img_base64 + '''" alt="Ahmed Mohamed Gomaa" class="profile-img">
+            <h1 id="hero-name">أحمد محمد جمعة</h1>
+            <div class="title" id="hero-title">مشغل محطة خرسانة مركزية | خبير في أنظمة الإنتاج والصيانة</div>
+            <p class="intro" id="hero-intro">
+                أنا محترف متخصص في تشغيل وصيانة محطات الخرسانة الجاهزة، أمتلك شغفاً كبيراً بالدقة التقنية والجودة العالية. 
+                مع خبرة تمتد لسنوات في مجال الإنشاءات، أسعى دائماً لتحقيق أعلى معايير الكفاءة والسلامة. 
+                أؤمن بأن النجاح يأتي من الالتزام والتطوير المستمر، وأبحث عن فرصة للانضمام إلى فريق عمل محترف 
+                في الإمارات العربية المتحدة حيث يمكنني أن أساهم في نجاح المشاريع الكبرى وأطور من مهاراتي باستمرار.
+            </p>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary" id="btn-contact">
+                    <i class="fas fa-phone"></i>
+                    <span id="btn-contact-text">تواصل معي</span>
+                </a>
+                <a href="Ahmed_Gomaa_CV.pdf" download class="btn btn-secondary" id="btn-cv">
+                    <i class="fas fa-download"></i>
+                    <span id="btn-cv-text">تحميل السيرة الذاتية</span>
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <h2 class="section-title fade-in" id="about-title">نبذة عني</h2>
+        <div class="about-content fade-in">
+            <div class="about-text" id="about-text">
+                <p>
+                    أنا <span class="highlight">أحمد محمد جمعة</span>، مشغل محطة خرسانة مركزية مصري الجنسية 
+                    مقيم حالياً في الإمارات العربية المتحدة. أمتلك خبرة واسعة في مجال الإنشاءات والخرسانة الجاهزة، 
+                    مع تخصص دقيق في تشغيل وصيانة محطات الخرسانة باستخدام أحدث البرامج والتقنيات.
+                </p>
+                <p>
+                    بدأت رحلتي المهنية في مصر حيث اكتسبت خبرة قيمة في شركة Quicrete للخرسانة الجاهزة، 
+                    ثم تطورت مهاراتي لتشمل أنظمة الري الحديثة والصيانة الميكانيكية والكهربائية. 
+                    أجيد استخدام برامج <span class="highlight">MRM Protek</span> و<span class="highlight">VURMAK</span> 
+                    و<span class="highlight">Dorner</span> و<span class="highlight">Formac</span>، 
+                    مما يجعلني قادراً على إدارة عمليات الإنتاج بكفاءة عالية.
+                </p>
+                <p>
+                    أبحث عن فرصة عمل في شركة رائدة في مجال المقاولات والإنشاءات في الإمارات، 
+                    حيث يمكنني أن أساهم بخبراتي في ضمان جودة الإنتاج وكفاءة التشغيل، 
+                    وأن أنمو مهنياً ضمن بيئة عمل محفزة وطموحة.
+                </p>
+            </div>
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="stat-number">+4</div>
+                    <div class="stat-label" id="stat-years">سنوات خبرة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">+3</div>
+                    <div class="stat-label" id="stat-programs">برامج متخصصة</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">+5</div>
+                    <div class="stat-label" id="stat-skills">مهارات تقنية</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label" id="stat-quality">الالتزام بالجودة</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title fade-in" id="skills-title">المهارات والخبرات التقنية</h2>
+        <div class="skills-grid fade-in">
+            <div class="skill-category">
+                <h3><i class="fas fa-industry"></i> <span id="skill-plant">تشغيل المحطات</span></h3>
+                <ul class="skill-list" id="skill-plant-list">
+                    <li><i class="fas fa-check-circle"></i> تشغيل محطات الخرسانة المركزية</li>
+                    <li><i class="fas fa-check-circle"></i> برنامج MRM Protek</li>
+                    <li><i class="fas fa-check-circle"></i> برنامج VURMAK</li>
+                    <li><i class="fas fa-check-circle"></i> برنامج Dorner</li>
+                    <li><i class="fas fa-check-circle"></i> برنامج Formac</li>
+                    <li><i class="fas fa-check-circle"></i> متابعة استهلاك المواد الخام</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-tools"></i> <span id="skill-maint">الصيانة والإصلاح</span></h3>
+                <ul class="skill-list" id="skill-maint-list">
+                    <li><i class="fas fa-check-circle"></i> صيانة ميكانيكية للمحطات</li>
+                    <li><i class="fas fa-check-circle"></i> صيانة كهربائية</li>
+                    <li><i class="fas fa-check-circle"></i> أنظمة الري المحوري المركزي</li>
+                    <li><i class="fas fa-check-circle"></i> أنظمة الري بالتنقيط</li>
+                    <li><i class="fas fa-check-circle"></i> السباكة والأنابيب</li>
+                    <li><i class="fas fa-check-circle"></i> صيانة المعدات الثقيلة</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-chart-line"></i> <span id="skill-prof">المهارات المهنية</span></h3>
+                <ul class="skill-list" id="skill-prof-list">
+                    <li><i class="fas fa-check-circle"></i> العمل تحت الضغط</li>
+                    <li><i class="fas fa-check-circle"></i> التكيف السريع</li>
+                    <li><i class="fas fa-check-circle"></i> حل المشكلات</li>
+                    <li><i class="fas fa-check-circle"></i> القيادة والإشراف</li>
+                    <li><i class="fas fa-check-circle"></i> التواصل الفعال</li>
+                    <li><i class="fas fa-check-circle"></i> إتقان الحاسوب</li>
+                </ul>
+            </div>
+            
+            <div class="skill-category">
+                <h3><i class="fas fa-language"></i> <span id="skill-lang">اللغات</span></h3>
+                <ul class="skill-list" id="skill-lang-list">
+                    <li><i class="fas fa-check-circle"></i> العربية: اللغة الأم</li>
+                    <li><i class="fas fa-check-circle"></i> الإنجليزية: جيد (قراءة/كتابة/محادثة)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" style="background: var(--light);">
+        <h2 class="section-title fade-in" id="exp-title">الخبرات العملية</h2>
+        <div class="timeline fade-in">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2022 - الآن</div>
+                    <h3 class="timeline-title" id="exp1-title">مشرف محطة خرسانة جاهزة</h3>
+                    <div class="timeline-company" id="exp1-company">Quicrete Ready Mix Company - الإسكندرية، مشروع بالم هيلز</div>
+                    <p id="exp1-desc">إشراف كامل على عمليات الإنتاج، متابعة جودة الخرسانة، إدارة فريق العمل، وضمان الالتزام بمعايير السلامة والجودة.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2021 - 2022</div>
+                    <h3 class="timeline-title" id="exp2-title">مشغل محطة خرسانة (برامج MRM & VURMAK)</h3>
+                    <div class="timeline-company" id="exp2-company">Quicrete Ready Mix Company - القاهرة الجديدة، أكتوبر</div>
+                    <p id="exp2-desc">تشغيل محطات الخرسانة باستخدام برامج MRM Protek وVURMAK، متابعة الصيانة الدورية، وإدارة استهلاك المواد الخام.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - 2021</div>
+                    <h3 class="timeline-title" id="exp3-title">سائق خدمات موقع</h3>
+                    <div class="timeline-company" id="exp3-company">Quicrete Ready Mix Company - القاهرة</div>
+                    <p id="exp3-desc">تقديم الدعم اللوجستي للمواقع الإنشائية، نقل المعدات والمواد، التنسيق بين الإدارة والموقع.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-date">2013 - 2020</div>
+                    <h3 class="timeline-title" id="exp4-title">فني شبكات ري بالتنقيط والمحوري</h3>
+                    <div class="timeline-company" id="exp4-company">الشركة الوطنية لاستصلاح الأراضي الصحراوية - وزارة الدفاع المصرية</div>
+                    <p id="exp4-desc">صيانة وتركيب شبكات الري الحديثة، أنظمة الري المحوري المركزي، السباكة، والأنابيب في مشاريع استصلاح الصحراء.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2 class="section-title fade-in" id="contact-title">تواصل معي</h2>
+        <div class="contact-grid fade-in">
+            <div class="contact-card">
+                <i class="fas fa-phone-alt"></i>
+                <h3 id="contact-phone-title">اتصل بي</h3>
+                <a href="tel:+971504426398">+971 50 442 6398</a>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3 id="contact-email-title">البريد الإلكتروني</h3>
+                <a href="mailto:toshkawy22@gmail.com">toshkawy22@gmail.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <a href="https://www.linkedin.com/in/ahmed-mohamed-gomaa-a28573226" target="_blank" id="linkedin-text">عرض الملف الشخصي</a>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fas fa-map-marker-alt"></i>
+                <h3 id="contact-location-title">الموقع</h3>
+                <span id="contact-location">الإمارات العربية المتحدة</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="Ahmed_Gomaa_CV.pdf" download class="btn btn-primary" style="font-size: 1.2rem; padding: 1.2rem 3rem;">
+                <i class="fas fa-file-download"></i>
+                <span id="download-cv-text">تحميل السيرة الذاتية الكاملة</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer Quote -->
+    <div class="footer-quote">
+        <p id="footer-quote">
+            "النجاح ليس وجهة، بل رحلة مستمرة من التعلم والتطوير. 
+            أؤمن بأن الالتزام والكفاءة هما مفتاح التميز في أي مجال، 
+            وأنا مستعد لأكون جزءاً من فريق يشاركني هذه الرؤية ويسعى لتحقيق الأفضل دائماً."
+        </p>
+        <div class="author" id="footer-author">- أحمد محمد جمعة</div>
+    </div>
+
+    <script>
+        // Language Data
+        const translations = {
+            ar: {
+                pageTitle: "أحمد محمد جمعة | مشغل محطة خرسانة مركزية",
+                logo: "أحمد جمعة",
+                nav: {
+                    home: "الرئيسية",
+                    about: "نبذة عني",
+                    skills: "المهارات",
+                    experience: "الخبرات",
+                    contact: "تواصل معي"
+                },
+                hero: {
+                    name: "أحمد محمد جمعة",
+                    title: "مشغل محطة خرسانة مركزية | خبير في أنظمة الإنتاج والصيانة",
+                    intro: `أنا محترف متخصص في تشغيل وصيانة محطات الخرسانة الجاهزة، أمتلك شغفاً كبيراً بالدقة التقنية والجودة العالية. 
+                    مع خبرة تمتد لسنوات في مجال الإنشاءات، أسعى دائماً لتحقيق أعلى معايير الكفاءة والسلامة. 
+                    أؤمن بأن النجاح يأتي من الالتزام والتطوير المستمر، وأبحث عن فرصة للانضمام إلى فريق عمل محترف 
+                    في الإمارات العربية المتحدة حيث يمكنني أن أساهم في نجاح المشاريع الكبرى وأطور من مهاراتي باستمرار.`,
+                    btnContact: "تواصل معي",
+                    btnCV: "تحميل السيرة الذاتية"
+                },
+                about: {
+                    title: "نبذة عني",
+                    text: `<p>
+                        أنا <span class="highlight">أحمد محمد جمعة</span>، مشغل محطة خرسانة مركزية مصري الجنسية 
+                        مقيم حالياً في الإمارات العربية المتحدة. أمتلك خبرة واسعة في مجال الإنشاءات والخرسانة الجاهزة، 
+                        مع تخصص دقيق في تشغيل وصيانة محطات الخرسانة باستخدام أحدث البرامج والتقنيات.
+                    </p>
+                    <p>
+                        بدأت رحلتي المهنية في مصر حيث اكتسبت خبرة قيمة في شركة Quicrete للخرسانة الجاهزة، 
+                        ثم تطورت مهاراتي لتشمل أنظمة الري الحديثة والصيانة الميكانيكية والكهربائية. 
+                        أجيد استخدام برامج <span class="highlight">MRM Protek</span> و<span class="highlight">VURMAK</span> 
+                        و<span class="highlight">Dorner</span> و<span class="highlight">Formac</span>، 
+                        مما يجعلني قادراً على إدارة عمليات الإنتاج بكفاءة عالية.
+                    </p>
+                    <p>
+                        أبحث عن فرصة عمل في شركة رائدة في مجال المقاولات والإنشاءات في الإمارات، 
+                        حيث يمكنني أن أساهم بخبراتي في ضمان جودة الإنتاج وكفاءة التشغيل، 
+                        وأن أنمو مهنياً ضمن بيئة عمل محفزة وطموحة.
+                    </p>`,
+                    stats: {
+                        years: "سنوات خبرة",
+                        programs: "برامج متخصصة",
+                        skills: "مهارات تقنية",
+                        quality: "الالتزام بالجودة"
+                    }
+                },
+                skills: {
+                    title: "المهارات والخبرات التقنية",
+                    categories: {
+                        plant: "تشغيل المحطات",
+                        maint: "الصيانة والإصلاح",
+                        prof: "المهارات المهنية",
+                        lang: "اللغات"
+                    },
+                    plantList: [
+                        "تشغيل محطات الخرسانة المركزية",
+                        "برنامج MRM Protek",
+                        "برنامج VURMAK",
+                        "برنامج Dorner",
+                        "برنامج Formac",
+                        "متابعة استهلاك المواد الخام"
+                    ],
+                    maintList: [
+                        "صيانة ميكانيكية للمحطات",
+                        "صيانة كهربائية",
+                        "أنظمة الري المحوري المركزي",
+                        "أنظمة الري بالتنقيط",
+                        "السباكة والأنابيب",
+                        "صيانة المعدات الثقيلة"
+                    ],
+                    profList: [
+                        "العمل تحت الضغط",
+                        "التكيف السريع",
+                        "حل المشكلات",
+                        "القيادة والإشراف",
+                        "التواصل الفعال",
+                        "إتقان الحاسوب"
+                    ],
+                    langList: [
+                        "العربية: اللغة الأم",
+                        "الإنجليزية: جيد (قراءة/كتابة/محادثة)"
+                    ]
+                },
+                experience: {
+                    title: "الخبرات العملية",
+                    items: [
+                        {
+                            date: "2022 - الآن",
+                            title: "مشرف محطة خرسانة جاهزة",
+                            company: "Quicrete Ready Mix Company - الإسكندرية، مشروع بالم هيلز",
+                            desc: "إشراف كامل على عمليات الإنتاج، متابعة جودة الخرسانة، إدارة فريق العمل، وضمان الالتزام بمعايير السلامة والجودة."
+                        },
+                        {
+                            date: "2021 - 2022",
+                            title: "مشغل محطة خرسانة (برامج MRM & VURMAK)",
+                            company: "Quicrete Ready Mix Company - القاهرة الجديدة، أكتوبر",
+                            desc: "تشغيل محطات الخرسانة باستخدام برامج MRM Protek وVURMAK، متابعة الصيانة الدورية، وإدارة استهلاك المواد الخام."
+                        },
+                        {
+                            date: "2020 - 2021",
+                            title: "سائق خدمات موقع",
+                            company: "Quicrete Ready Mix Company - القاهرة",
+                            desc: "تقديم الدعم اللوجستي للمواقع الإنشائية، نقل المعدات والمواد، التنسيق بين الإدارة والموقع."
+                        },
+                        {
+                            date: "2013 - 2020",
+                            title: "فني شبكات ري بالتنقيط والمحوري",
+                            company: "الشركة الوطنية لاستصلاح الأراضي الصحراوية - وزارة الدفاع المصرية",
+                            desc: "صيانة وتركيب شبكات الري الحديثة، أنظمة الري المحوري المركزي، السباكة، والأنابيب في مشاريع استصلاح الصحراء."
+                        }
+                    ]
+                },
+                contact: {
+                    title: "تواصل معي",
+                    phone: "اتصل بي",
+                    email: "البريد الإلكتروني",
+                    linkedin: "عرض الملف الشخصي",
+                    location: "الموقع",
+                    locationVal: "الإمارات العربية المتحدة",
+                    downloadCV: "تحميل السيرة الذاتية الكاملة"
+                },
+                footer: {
+                    quote: `"النجاح ليس وجهة، بل رحلة مستمرة من التعلم والتطوير. 
+                    أؤمن بأن الالتزام والكفاءة هما مفتاح التميز في أي مجال، 
+                    وأنا مستعد لأكون جزءاً من فريق يشاركني هذه الرؤية ويسعى لتحقيق الأفضل دائماً."`,
+                    author: "- أحمد محمد جمعة"
+                },
+                langButton: "English"
+            },
+            en: {
+                pageTitle: "Ahmed Mohamed Gomaa | Concrete Plant Operator",
+                logo: "Ahmed Gomaa",
+                nav: {
+                    home: "Home",
+                    about: "About",
+                    skills: "Skills",
+                    experience: "Experience",
+                    contact: "Contact"
+                },
+                hero: {
+                    name: "Ahmed Mohamed Gomaa",
+                    title: "Central Concrete Plant Operator | Production & Maintenance Expert",
+                    intro: `I am a specialized professional in operating and maintaining ready-mix concrete plants, with a strong passion for technical precision and high quality. 
+                    With years of experience in the construction field, I always strive to achieve the highest standards of efficiency and safety. 
+                    I believe that success comes from commitment and continuous development, and I am looking for an opportunity to join a professional team 
+                    in the United Arab Emirates where I can contribute to the success of major projects and continuously develop my skills.`,
+                    btnContact: "Contact Me",
+                    btnCV: "Download CV"
+                },
+                about: {
+                    title: "About Me",
+                    text: `<p>
+                        I am <span class="highlight">Ahmed Mohamed Gomaa</span>, a central concrete plant operator of Egyptian nationality 
+                        currently residing in the United Arab Emirates. I have extensive experience in the construction and ready-mix concrete field, 
+                        with precise specialization in operating and maintaining concrete plants using the latest software and technologies.
+                    </p>
+                    <p>
+                        I started my professional journey in Egypt where I gained valuable experience at Quicrete Ready Mix Company, 
+                        then developed my skills to include modern irrigation systems, mechanical and electrical maintenance. 
+                        I am proficient in using <span class="highlight">MRM Protek</span>, <span class="highlight">VURMAK</span>, 
+                        <span class="highlight">Dorner</span>, and <span class="highlight">Formac</span> software, 
+                        enabling me to manage production operations with high efficiency.
+                    </p>
+                    <p>
+                        I am seeking a job opportunity at a leading contracting and construction company in the UAE, 
+                        where I can contribute my expertise to ensure production quality and operational efficiency, 
+                        and grow professionally within a motivating and ambitious work environment.
+                    </p>`,
+                    stats: {
+                        years: "Years Experience",
+                        programs: "Specialized Programs",
+                        skills: "Technical Skills",
+                        quality: "Quality Commitment"
+                    }
+                },
+                skills: {
+                    title: "Skills & Technical Expertise",
+                    categories: {
+                        plant: "Plant Operation",
+                        maint: "Maintenance & Repair",
+                        prof: "Professional Skills",
+                        lang: "Languages"
+                    },
+                    plantList: [
+                        "Central Concrete Plant Operation",
+                        "MRM Protek Software",
+                        "VURMAK Software",
+                        "Dorner Software",
+                        "Formac Software",
+                        "Raw Material Consumption Monitoring"
+                    ],
+                    maintList: [
+                        "Mechanical Plant Maintenance",
+                        "Electrical Maintenance",
+                        "Center Pivot Irrigation Systems",
+                        "Drip Irrigation Systems",
+                        "Plumbing & Piping",
+                        "Heavy Equipment Maintenance"
+                    ],
+                    profList: [
+                        "Working Under Pressure",
+                        "Quick Adaptation",
+                        "Problem Solving",
+                        "Leadership & Supervision",
+                        "Effective Communication",
+                        "Computer Proficiency"
+                    ],
+                    langList: [
+                        "Arabic: Native",
+                        "English: Good (Reading/Writing/Speaking)"
+                    ]
+                },
+                experience: {
+                    title: "Work Experience",
+                    items: [
+                        {
+                            date: "2022 - Present",
+                            title: "Ready-Mix Concrete Plant Supervisor",
+                            company: "Quicrete Ready Mix Company - Alexandria, Palm Hills Project",
+                            desc: "Full supervision of production operations, concrete quality monitoring, team management, and ensuring compliance with safety and quality standards."
+                        },
+                        {
+                            date: "2021 - 2022",
+                            title: "Concrete Plant Operator (MRM & VURMAK Programs)",
+                            company: "Quicrete Ready Mix Company - New Cairo, October",
+                            desc: "Operating concrete plants using MRM Protek and VURMAK software, periodic maintenance monitoring, and raw material consumption management."
+                        },
+                        {
+                            date: "2020 - 2021",
+                            title: "Site Services Driver",
+                            company: "Quicrete Ready Mix Company - Cairo",
+                            desc: "Providing logistical support to construction sites, transporting equipment and materials, coordinating between management and site."
+                        },
+                        {
+                            date: "2013 - 2020",
+                            title: "Drip & Center Pivot Irrigation Networks Technician",
+                            company: "National Company for Desert Land Reclamation - Egyptian Ministry of Defense",
+                            desc: "Maintenance and installation of modern irrigation networks, center pivot irrigation systems, plumbing, and pipes in desert reclamation projects."
+                        }
+                    ]
+                },
+                contact: {
+                    title: "Contact Me",
+                    phone: "Call Me",
+                    email: "Email",
+                    linkedin: "View Profile",
+                    location: "Location",
+                    locationVal: "United Arab Emirates",
+                    downloadCV: "Download Full CV"
+                },
+                footer: {
+                    quote: `"Success is not a destination, but a continuous journey of learning and development. 
+                    I believe that commitment and competence are the keys to excellence in any field, 
+                    and I am ready to be part of a team that shares this vision and always strives for the best."`,
+                    author: "- Ahmed Mohamed Gomaa"
+                },
+                langButton: "العربية"
+            }
+        };
+
+        let currentLang = 'ar';
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'ar' ? 'en' : 'ar';
+            const html = document.getElementById('html');
+            const t = translations[currentLang];
+            
+            // Update direction
+            html.setAttribute('dir', currentLang === 'ar' ? 'rtl' : 'ltr');
+            html.setAttribute('lang', currentLang);
+            
+            // Update page title
+            document.getElementById('page-title').textContent = t.pageTitle;
+            
+            // Update logo
+            document.getElementById('logo-text').textContent = t.logo;
+            
+            // Update nav
+            document.querySelectorAll('#nav-links a').forEach(link => {
+                const key = link.getAttribute('data-key');
+                link.textContent = t.nav[key];
+            });
+            
+            // Update hero
+            document.getElementById('hero-name').textContent = t.hero.name;
+            document.getElementById('hero-title').textContent = t.hero.title;
+            document.getElementById('hero-intro').textContent = t.hero.intro;
+            document.getElementById('btn-contact-text').textContent = t.hero.btnContact;
+            document.getElementById('btn-cv-text').textContent = t.hero.btnCV;
+            
+            // Update about
+            document.getElementById('about-title').textContent = t.about.title;
+            document.getElementById('about-text').innerHTML = t.about.text;
+            document.getElementById('stat-years').textContent = t.about.stats.years;
+            document.getElementById('stat-programs').textContent = t.about.stats.programs;
+            document.getElementById('stat-skills').textContent = t.about.stats.skills;
+            document.getElementById('stat-quality').textContent = t.about.stats.quality;
+            
+            // Update skills
+            document.getElementById('skills-title').textContent = t.skills.title;
+            document.getElementById('skill-plant').textContent = t.skills.categories.plant;
+            document.getElementById('skill-maint').textContent = t.skills.categories.maint;
+            document.getElementById('skill-prof').textContent = t.skills.categories.prof;
+            document.getElementById('skill-lang').textContent = t.skills.categories.lang;
+            
+            // Update skill lists
+            const updateSkillList = (id, items) => {
+                const list = document.getElementById(id);
+                list.innerHTML = items.map(item => `<li><i class="fas fa-check-circle"></i> ${item}</li>`).join('');
+            };
+            updateSkillList('skill-plant-list', t.skills.plantList);
+            updateSkillList('skill-maint-list', t.skills.maintList);
+            updateSkillList('skill-prof-list', t.skills.profList);
+            updateSkillList('skill-lang-list', t.skills.langList);
+            
+            // Update experience
+            document.getElementById('exp-title').textContent = t.experience.title;
+            const expItems = document.querySelectorAll('.timeline-item');
+            t.experience.items.forEach((item, index) => {
+                if (expItems[index]) {
+                    expItems[index].querySelector('.timeline-date').textContent = item.date;
+                    expItems[index].querySelector('.timeline-title').textContent = item.title;
+                    expItems[index].querySelector('.timeline-company').textContent = item.company;
+                    expItems[index].querySelector('p').textContent = item.desc;
+                }
+            });
+            
+            // Update contact
+            document.getElementById('contact-title').textContent = t.contact.title;
+            document.getElementById('contact-phone-title').textContent = t.contact.phone;
+            document.getElementById('contact-email-title').textContent = t.contact.email;
+            document.getElementById('linkedin-text').textContent = t.contact.linkedin;
+            document.getElementById('contact-location-title').textContent = t.contact.location;
+            document.getElementById('contact-location').textContent = t.contact.locationVal;
+            document.getElementById('download-cv-text').textContent = t.contact.downloadCV;
+            
+            // Update footer
+            document.getElementById('footer-quote').textContent = t.footer.quote;
+            document.getElementById('footer-author').textContent = t.footer.author;
+            
+            // Update lang button
+            document.getElementById('lang-text').textContent = t.langButton;
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(26, 54, 93, 0.98)';
+            } else {
+                navbar.style.background = 'rgba(26, 54, 93, 0.95)';
+            }
+        });
+
+        // Fade in animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>'''
